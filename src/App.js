@@ -1,12 +1,12 @@
 
-import Employee from "./components/Employee"
-import Accordion from "./components/Accordion"
+//import Employee from "./components/Employee"
+//import Accordion from "./components/Accordion"
+import Balok from "./pages/Balok";
 
 function App() {
   return (
     <div>
-      <div className="App">
-
+      {/** <div className="App"> 
         <Employee name="Ramma" address="Tulungagung" born="9 November 2004"
           avatar="https://cutewallpaper.org/21/avatar-images-download/Avatar-icon-clipart-images-gallery-for-free-download-.png">
           Hayyyuuuuukk 
@@ -28,8 +28,11 @@ function App() {
           avatar="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png">
           Evos Rehan adalah pro player yang rajin menabung  
         </Accordion> <br/>
+      </div> */}
 
-
+      <div>
+        <Balok title="Lemari"></Balok>
+        <Balok title="Kasur"></Balok>
       </div>
     </div>
   );
