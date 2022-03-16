@@ -2,6 +2,7 @@
 //import Employee from "./components/Employee"
 //import Accordion from "./components/Accordion"
 import Balok from "./pages/Balok";
+import Student from "./pages/Student";
 
 function App() {
   return (
