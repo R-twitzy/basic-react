@@ -14,6 +14,7 @@ export default function Student(props) {
     let [name, setName] = useState("")
     let [birthdate, setBirthdate] = useState("")
     let [action, setAction] = useState("")
+   let [editId, setEditId] = useState(true)
 
     useEffect(() => {
         // inisiasi data array students
@@ -37,6 +38,7 @@ export default function Student(props) {
         setName("")
         setBirthdate("")
         setAction("insert")
+        setEditId(true)
     }
 
     // function saveStudent
@@ -54,7 +56,36 @@ export default function Student(props) {
             temp.push(newData)
             // store to students again
             setStudents(temp)
+        } else if (action === `edit`) {
+            // store data students to temp
+            let temp = [...Student]
+
+            // find index of selected data by ID
+            let index = temp.findIndex(siswa => siswa.id === id)
+
+            // update data on founded index
+            temp[index].name = name
+            temp[index].birthdate = birthdate
+
+            // restore to student compile
+            setStudents(temp)
         }
+    }
+
+    // function edit student
+    let editStudent = siswa => {
+        // open the modal
+        modalStudent.show()
+        setId(siswa.id)
+        setName(siswa.name)
+        setBirthdate(siswa.birthdate)
+        setAction(`edit`)
+        setEditId(false)
+    }
+
+    // function delete student
+    let deleteStudent = siswa => {
+        
     }
 
     return(
@@ -64,20 +95,34 @@ export default function Student(props) {
                     <h3 className="text-white">List of Student</h3>
                 </div>
                 <div className="card-body">
-                    {students.map(item => (
-                        <div className="row" key={`key${item.id}`} >
+                    {students.map(siswa => (
+                        <div className="row" key={`key${siswa.id}`} >
                             <div className="col-2">
                                 <small>ID</small>
-                                <h5>{item.id}</h5>
+                                <h5>{siswa.id}</h5>
                             </div>
                             <div className="col-4">
                                 <small>Name</small>
-                                <h5>{item.name}</h5>
+                                <h5>{siswa.name}</h5>
                             </div>
                             <div className="col-4">
                                 <small>Date of Birth</small>
-                                <h5>{item.birthdate}</h5>
+                                <h5>{siswa.birthdate}</h5>
                             </div>
+                            <diV className="col-2">
+                                <small>Action</small> <br/>
+                                {/**edit button */}
+                                <button className="btn btn-outline-primary mx-1"
+                                onClick={() => editStudent(siswa)}>
+                                    Edit
+                                </button>
+
+                                {/**delete button */}
+                                <button className="btn btn-danger mx-1"
+                                onClick={() => deleteStudent(siswa)}>
+                                    Delete
+                                </button>
+                            </diV>
                         </div>
                     ))}
 
@@ -100,7 +145,11 @@ export default function Student(props) {
                                     <input type={`number`}
                                     className="form-control mb-2"
                                     value={id}
-                                    onChange={ev => setId(ev.target.value)} />
+                                    onChange={ev => setId(ev.target.value)} 
+                                    readOnly={!editId}/>
+                                    {/** saat add student, editId = true 
+                                     * oleh krn itu readonly harus false
+                                    */}
 
                                     Name
                                     <input type={`text`}
