@@ -1,188 +1,61 @@
-import { useState, useEffect } from "react"
-/**
- * useState -> utk mendefinisikan state 
- * useEddect -> fungsi yg dijalankan (dieksekusi)
- * ketika komponennya telah ditampilkan
- * 
- */
-import { Modal } from "bootstrap"
+import { useState, useEffect } from "react";
+import BookList from "../components/BookList";
 
-export default function Student(props) {
-    let [students, setStudents] = useState([])
-    let [modalStudent, setModalStudent] = useState(null)
-    let [id, setId] = useState(0)
-    let [name, setName] = useState("")
-    let [birthdate, setBirthdate] = useState("")
+//import { Modal } from "bootstrap";
+
+export default function Book(props){
+    let [books, setBooks] = useState([])
+    /**{let [modalBook, setModalBook] = useState(null)
+    let [isbn, setIsbn] = useState(0)
+    let [cover, setCover] = useState("")
+    let [judul, setJudul] = useState("")
+    let [penulis, setPenulis] = useState("")
+    let [penerbit, setPenerbit] = useState("")
+    let [income, setIncome] = useState(0)
+    let [rating, setRating] = useState(0)
     let [action, setAction] = useState("")
-   let [editId, setEditId] = useState(true)
+    let [editIsbn, setEditIsbn] = useState(true)}*/
 
     useEffect(() => {
-        // inisiasi data array students
-        let arrayStudents =[
-            {id: 1, name: `Jang Yeeun (Jaevis)`, birthdate: `9 Desember 2004`},
-            {id: 2, name: `Bae Jinsol (Baevis)`, birthdate: `28 Desember 2004`},
+        // inisiasi data array books
+        let arrayBooks =[
+            {isbn: 111, cover:`https://static.vecteezy.com/system/resources/previews/001/761/386/non_2x/city-background-business-book-cover-design-template-vector.jpg`,
+                judul:`Red Bussiness`, penulis:`Doni Salaman`, 
+                penerbit:`Bimono`, income: 1000, rating: 3,
+                progress: 40},
+            {isbn: 222, cover:`https://static.vecteezy.com/system/resources/previews/000/665/896/non_2x/light-blue-geometric-city-background-business-book-cover-design-template.jpg`,
+                judul:`Blue Corporate`, penulis:`Endro Khanz`, 
+                penerbit:`Piw Publisher`, income: 3000, rating: 4,
+                progress: 65},
+            {isbn: 333, cover:`https://static.vecteezy.com/system/resources/previews/000/665/888/non_2x/modern-triangular-city-background-business-book-cover-design-template.jpg`,
+                judul:`Green Triangle`, penulis:`Ahmad Segatogi`, 
+                penerbit:`Tiga Company`, income: 2000, rating: 4,
+                progress: 80},
         ]
-        setStudents(arrayStudents)
+        setBooks(arrayBooks)
 
-        // inisiasi state modal student
-        setModalStudent(new Modal(document.getElementById(`modal_student`)))
+        /**{// inisiasi state modal book
+        setModalBook(new Modal(document.getElementById(`modal_book`)))}*/
     }, [])
 
-    // function addStudent
-    let addStudent = () => {
-        // open modal
-        modalStudent.show()
-
-        // reset isi dari setiap inputan
-        setId(0)
-        setName("")
-        setBirthdate(0)
-        setAction("insert")
-        setEditId(true)
-    }
-
-    // function saveStudent
-    let saveStudent = () => {
-        // close modal
-        modalStudent.hide()
-        if (action === `insert`){
-            let newData = {
-                id: id, name: name, birthdate: birthdate
-            }
-
-            // store array from students
-            let temp = [...students]
-            // add newdata
-            temp.push(newData)
-            // store to students again
-            setStudents(temp)
-        } else if (action === `edit`) {
-            // store data students to temp
-            let temp = [...students]
-
-            // find index of selected data by ID
-            let index = temp.findIndex(siswa => siswa.id === id)
-
-            // update data on founded index
-            temp[index].name = name
-            temp[index].birthdate = birthdate
-
-            // restore to student compile
-            setStudents(temp)
-        }
-    }
-
-    // function edit student
-    let editStudent = siswa => {
-        // open the modal
-        modalStudent.show()
-        setId(siswa.id)
-        setName(siswa.name)
-        setBirthdate(siswa.birthdate)
-        setAction(`edit`)
-        setEditId(false)
-    }
-
-    // function delete student
-    let deleteStudent = siswa => {
-        if(window.confirm('this data will get deleted,Are you sure?')){
-            //store array student to temp
-            let temp = [...students]
-
-            //find index of selected data in students array
-            let index = temp.findIndex(sis => sis.id === siswa.id)
-
-            // delete data form array based on found index
-            temp.splice(index, 1)
-
-            //restore to array student
-            setStudents(temp)
-        }
-    }
-
     return(
-        <div className="container-fluid">
-            <div className="card col-10">
-                <div className="card-header bg-secondary">
-                    <h3 className="text-white">List of Student</h3>
-                </div>
-                <div className="card-body">
-                    {students.map(siswa => (
-                        <div className="row" key={`key${siswa.id}`} >
-                            <div className="col-2">
-                                <small>ID</small>
-                                <h5>{siswa.id}</h5>
-                            </div>
-                            <div className="col-4">
-                                <small>Name</small>
-                                <h5>{siswa.name}</h5>
-                            </div>
-                            <div className="col-4">
-                                <small>Date of Birth</small>
-                                <h5>{siswa.birthdate}</h5>
-                            </div>
-                            <diV className="col-2">
-                                {/**edit button */}
-                                <button className="btn btn-outline-primary mx-1"
-                                onClick={() => editStudent(siswa)}>
-                                    Edit
-                                </button>
-
-                                {/**delete button */}
-                                <button className="btn btn-danger mx-1"
-                                onClick={() => deleteStudent(siswa)}>
-                                    Delete
-                                </button>
-                            </diV>
-                        </div>
-                    ))}
-
-                    {/** button add data */}
-                    <button className="btn btn-outline-success mt-2"
-                    onClick={() => addStudent()}>
-                        Tambah Siswa
-                    </button>
-
-                    {/** modal component */}
-                    <div className="modal" id="modal_student">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4>Form Student</h4>
-                                </div>
-                                <div className="modal-body">
-                                    {/** input for ID, Name, Birthdate */}
-                                    ID
-                                    <input type={`number`}
-                                    className="form-control mb-2"
-                                    value={id}
-                                    onChange={ev => setId(ev.target.value)} 
-                                    readOnly={!editId}/>
-                                    {/** saat add student, editId = true 
-                                     * oleh krn itu readonly harus false
-                                    */}
-
-                                    Name
-                                    <input type={`text`}
-                                    className="form-control mb-2"
-                                    value={name}
-                                    onChange={ev => setName(ev.target.value)}/>
-
-                                    Birth Year
-                                    <input type={`text`}
-                                    className="form-control mb-2"
-                                    value={birthdate}
-                                    onChange={ev => setBirthdate(ev.target.value)}/>
-
-                                    <button className="btn-sm btn-success mt-2"
-                                    onClick={() => saveStudent()}>
-                                        Simpan
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="container-fluid card">
+            <div className="card-header bg-secondary">
+                <h3 className="text-white">List of Book</h3>
+            </div>
+            <div className="card-body">
+                {books.map(item => (
+                    <BookList 
+                        key={`key-${item.isbn}`}
+                        isbn={item.isbn} 
+                        cover={item.cover} 
+                        judul={item.judul}
+                        penulis={item.penulis}
+                        penerbit={item.penerbit}
+                        rating={item.rating} 
+                        progress={item.progress}>    
+                    </BookList>
+                ))}
             </div>
         </div>
     )

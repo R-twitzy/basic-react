@@ -14,7 +14,7 @@ export default function Student(props) {
     let [name, setName] = useState("")
     let [birthdate, setBirthdate] = useState("")
     let [action, setAction] = useState("")
-   let [editId, setEditId] = useState(true)
+    let [editId, setEditId] = useState(true)
 
     useEffect(() => {
         // inisiasi data array students
