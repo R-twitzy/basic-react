@@ -22,18 +22,18 @@ export default function Score(props) {
     }, [])
 
     return(
-        <div class="container mt-5 px-2">
-            <div class="table-responsive">
-                <table class="table table-responsive table-borderless">
+        <div className="container mt-5 px-2">
+            <div className="table-responsive">
+                <table className="table table-responsive table-borderless">
                     <thead>
-                        <tr class="bg-light">
+                        <tr className="bg-light">
                             <th scope="col" width="5%">ID</th>
                             <th scope="col" width="25%">Name</th>
                             <th scope="col" width="15%">Math</th>
                             <th scope="col" width="15%">English</th>
                             <th scope="col" width="15%">Chemistry</th>
                             <th scope="col" width="15%">Average</th>
-                            <th scope="col" class="text-end" width="25%"><span>Information</span></th>
+                            <th scope="col" className="text-end" width="25%"><span>Information</span></th>
                         </tr>
                     </thead>
                     <tbody>

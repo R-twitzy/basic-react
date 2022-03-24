@@ -15,9 +15,9 @@ export default function ScoreList(props){
             <td>{props.english}</td>
             <td>{props.chemistry}</td>
             <td>{avg.toFixed()}</td>
-            <td class="text-end">
-                <span class="ms-1">{ket}</span>
-                <i class={cl}></i>
+            <td className="text-end">
+                <span className="ms-1">{ket}</span>
+                <i className={cl}></i>
             </td>
         </tr>
     )
