@@ -5,7 +5,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 //import Student from './pages/Student';
 //import Book from './pages/Book';
-import Score from './pages/Score';
+//import Score from './pages/Score';
+import Tahu from './pages/Tahu';
 
 
 // load library bootstrap for styling
@@ -15,7 +16,7 @@ import "@fortawesome/fontawesome-free/js/all"
 //import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <Score/>,
+    <Tahu/>,
     /**<React.StrictMode>
       <BrowserRouter>
         <App />
