@@ -24,7 +24,7 @@ export default function Score(props) {
     return(
         <div className="container mt-5 px-2">
             <div className="table-responsive">
-                <table className="table table-responsive table-borderless">
+                <table className="table table-responsive">
                     <thead>
                         <tr className="bg-light">
                             <th scope="col" width="5%">ID</th>

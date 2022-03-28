@@ -5,7 +5,7 @@ export default function ScoreList(props){
         var ket="passed "
     } else{
         var cl="fa fa-minus-square text-danger"
-        var ket="not passed "
+        var ket="failed "
     }
     return(
         <tr>
