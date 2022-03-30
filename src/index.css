@@ -12,6 +12,31 @@ code {
     monospace;
 }
 
+.tanggal {
+  color: #fff;
+  background-color: #75a0fc!important
+}
+
+.awal {
+  color: #fff;
+  background-color: #81999c!important
+}
+
+.terjual {
+  color: #fff;
+  background-color: #58e783!important
+}
+
+.rusak {
+  color: #fff;
+  background-color: #f74251!important
+}
+
+.untung {
+  color: #fff;
+  background-color: #6e8d6c!important
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

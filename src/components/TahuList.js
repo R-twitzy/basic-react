@@ -6,28 +6,28 @@ export default function TahuList(props) {
             {/** Row Atas*/}
             <div className="row px-3 pt-1">
                 {/** Tanggal*/}
-                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm">
+                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm tanggal">
                     <div className="d-flex px-2 flex-column">
                         <h4>Tanggal</h4>
                         <h4>{props.tgl}</h4>
                     </div>
                 </div>
                 {/** Stok Awal*/}
-                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm">
+                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm awal">
                     <div className="d-flex px-2 flex-column">
                         <h4>Stok Awal</h4>
                         <h4>{props.awal}</h4>
                     </div>
                 </div>
                 {/** Terjual*/}
-                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm">
+                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm terjual">
                     <div className="d-flex px-2 flex-column">
                         <h4>Terjual</h4>
                         <h4>{props.terjual}</h4>
                     </div>
                 </div>
                 {/** Rusak*/}
-                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm">
+                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm rusak">
                     <div className="d-flex px-2 flex-column">
                         <h4>Rusak</h4>
                         <h4>{props.rusak}</h4>
@@ -38,7 +38,7 @@ export default function TahuList(props) {
             {/** Row Bawah*/}
             <div className="row px-3 pb-3">
                 {/** Keuntungan*/}
-                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm">
+                <div className="col card mx-1 mt-3 p-2 px-3 py-3 shadow-sm untung">
                     <div className="d-flex px-2 flex-column">
                         <h4>Keuntungan</h4>
                         <h4>Rp {untung}</h4>
